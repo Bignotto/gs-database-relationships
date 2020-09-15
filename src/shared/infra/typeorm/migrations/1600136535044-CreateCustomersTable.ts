@@ -18,6 +18,10 @@ export class CreateCustomersTable1600136535044 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'email',
+            type: 'varchar',
+          },
+          {
             name: 'created_at',
             type: 'timestamp with time zone',
             default: 'now()',
