@@ -7,7 +7,7 @@ import {
 
 export class CreateOrdersProductsTable1600228914244
   implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'orders_products',
@@ -21,11 +21,11 @@ export class CreateOrdersProductsTable1600228914244
           },
           {
             name: 'product_id',
-            type: 'varchar',
+            type: 'uuid',
           },
           {
             name: 'order_id',
-            type: 'varchar',
+            type: 'uuid',
           },
           {
             name: 'price',
@@ -50,34 +50,9 @@ export class CreateOrdersProductsTable1600228914244
         ],
       }),
     );
-    await queryRunner.createForeignKey(
-      'orders',
-      new TableForeignKey({
-        name: 'MainOrder',
-        columnNames: ['order_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'orders',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      }),
-    );
-
-    await queryRunner.createForeignKey(
-      'orders',
-      new TableForeignKey({
-        name: 'OrderProduct',
-        columnNames: ['product_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'orders',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      }),
-    );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> {
-    await queryRunner.dropForeignKey('orders_products', 'MainOrder');
-    await queryRunner.dropForeignKey('orders_products', 'OrderProduct');
+  public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('orders_products');
   }
 }

@@ -20,7 +20,7 @@ export class CreateOrdersTable1600227179412 implements MigrationInterface {
           },
           {
             name: 'customer_id',
-            type: 'varchar',
+            type: 'uuid',
           },
           {
             name: 'created_at',
