@@ -31,7 +31,7 @@ class CreateOrderService {
   ) {}
 
   public async execute({ customer_id, products }: IRequest): Promise<Order> {
-    console.log('service running');
+    console.log('create order service running');
     //[] create order
     //[] get order id
     //[] create order_products
@@ -51,13 +51,10 @@ class CreateOrderService {
       };
     });
 
-    console.log(qttAndPrc);
-
-    const order = this.ordersRepository.create({
+    const order = await this.ordersRepository.create({
       customer,
       products: qttAndPrc,
     });
-
     return order;
   }
 }
