@@ -32,9 +32,6 @@ class CreateOrderService {
 
   public async execute({ customer_id, products }: IRequest): Promise<Order> {
     console.log('create order service running');
-    //[] create order
-    //[] get order id
-    //[] create order_products
 
     const customer = await this.customersRepository.findById(customer_id);
     if (!customer) {
@@ -43,7 +40,7 @@ class CreateOrderService {
 
     const productsList = await this.productsRepository.findAllById(products);
     const qttAndPrc = productsList.map((prod, idx, prdArray) => {
-      const qttIdx = products.findIndex(p => (p.id = prod.id));
+      let qttIdx = products.findIndex(p => p.id === prod.id);
       return {
         product_id: prod.id,
         price: prod.price,
