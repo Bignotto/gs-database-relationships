@@ -31,8 +31,6 @@ class CreateOrderService {
   ) {}
 
   public async execute({ customer_id, products }: IRequest): Promise<Order> {
-    console.log('create order service running');
-
     const customer = await this.customersRepository.findById(customer_id);
     if (!customer) {
       throw new AppError('Must be a valid customer to place an order.');
