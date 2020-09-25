@@ -4,6 +4,7 @@ import IProductsRepository from '@modules/products/repositories/IProductsReposit
 import ICustomersRepository from '@modules/customers/repositories/ICustomersRepository';
 import Order from '../infra/typeorm/entities/Order';
 import IOrdersRepository from '../repositories/IOrdersRepository';
+import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   id: string;
@@ -24,6 +25,9 @@ class FindOrderService {
 
   public async execute({ id }: IRequest): Promise<Order | undefined> {
     const order = await this.ordersRepository.findById(id);
+
+    if (!order) throw new AppError('Invalid Order');
+
     return order;
   }
 }
