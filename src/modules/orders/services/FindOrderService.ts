@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { inject, injectable } from 'tsyringe';
 
 import IProductsRepository from '@modules/products/repositories/IProductsRepository';

@@ -236,7 +236,6 @@ describe('App', () => {
       });
 
     let foundProduct = await productsRepository.findOne(product.body.id);
-    console.log(foundProduct);
 
     expect(foundProduct).toEqual(
       expect.objectContaining({
@@ -257,7 +256,6 @@ describe('App', () => {
       });
 
     foundProduct = await productsRepository.findOne(product.body.id);
-    console.log(foundProduct);
 
     expect(foundProduct).toEqual(
       expect.objectContaining({
