@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { getRepository, Repository } from 'typeorm';
 
 import IOrdersRepository from '@modules/orders/repositories/IOrdersRepository';

@@ -6,15 +6,22 @@ import {
   ManyToOne,
   JoinColumn,
   OneToMany,
+  Column,
 } from 'typeorm';
 
 import Customer from '@modules/customers/infra/typeorm/entities/Customer';
 import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
+import { Exclude } from 'class-transformer';
 
 @Entity('orders')
 class Order {
+  @Exclude()
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Exclude()
+  @Column()
+  customer_id: string;
 
   @ManyToOne(() => Customer, { eager: true })
   @JoinColumn({ name: 'customer_id' })
@@ -26,9 +33,11 @@ class Order {
   })
   order_products: OrdersProducts[];
 
+  @Exclude()
   @CreateDateColumn()
   created_at: Date;
 
+  @Exclude()
   @UpdateDateColumn()
   updated_at: Date;
 }

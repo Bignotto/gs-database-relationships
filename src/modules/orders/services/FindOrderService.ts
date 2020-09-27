@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { inject, injectable } from 'tsyringe';
 
 import IProductsRepository from '@modules/products/repositories/IProductsRepository';
@@ -29,6 +27,10 @@ class FindOrderService {
     const order = await this.ordersRepository.findById(id);
 
     if (!order) throw new AppError('Invalid Order');
+
+    order.order_products.forEach(
+      line => (line.quantity = Number(line.quantity)),
+    );
 
     return order;
   }
