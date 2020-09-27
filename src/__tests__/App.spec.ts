@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import request from 'supertest';
 
 import { Connection, getConnection, getRepository } from 'typeorm';

@@ -10,9 +10,11 @@ import {
 
 import Order from '@modules/orders/infra/typeorm/entities/Order';
 import Product from '@modules/products/infra/typeorm/entities/Product';
+import { Exclude } from 'class-transformer';
 
 @Entity('orders_products')
 class OrdersProducts {
+  @Exclude()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -27,18 +29,21 @@ class OrdersProducts {
   @Column()
   product_id: string;
 
+  @Exclude()
   @Column()
   order_id: string;
 
-  @Column()
+  @Column('decimal', { precision: 11, scale: 2 })
   price: number;
 
-  @Column()
+  @Column('int')
   quantity: number;
 
+  @Exclude()
   @CreateDateColumn()
   created_at: Date;
 
+  @Exclude()
   @UpdateDateColumn()
   updated_at: Date;
 }

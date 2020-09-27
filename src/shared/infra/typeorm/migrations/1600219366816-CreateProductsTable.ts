@@ -25,7 +25,7 @@ export class CreateProductsTable1600219366816 implements MigrationInterface {
           },
           {
             name: 'quantity',
-            type: 'numeric',
+            type: 'int',
           },
           {
             name: 'created_at',

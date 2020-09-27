@@ -43,7 +43,7 @@ class ProductsRepository implements IProductsRepository {
       return { id: product.id };
     });
     const foundProduct = await this.ormRepository.findByIds(productsToFind, {
-      select: ['id', 'price'],
+      select: ['id', 'price', 'quantity', 'name'],
     });
     return foundProduct;
   }
