@@ -28,9 +28,9 @@ class FindOrderService {
 
     if (!order) throw new AppError('Invalid Order');
 
-    order.order_products.forEach(
-      line => (line.quantity = Number(line.quantity)),
-    );
+    // order.order_products.forEach(
+    //   line => (line.quantity = Number(line.quantity)),
+    // );
 
     return order;
   }

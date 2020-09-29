@@ -35,7 +35,7 @@ export class CreateOrdersProductsTable1600228914244
           },
           {
             name: 'quantity',
-            type: 'numeric',
+            type: 'integer',
           },
           {
             name: 'created_at',
